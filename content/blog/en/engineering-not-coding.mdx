@@ -1,0 +1,44 @@
+---
+title: 'Engineering, not coding.'
+description: 'Why we draw a line between writing code and engineering software, and what that distinction means for the systems you ship.'
+date: '2026-05-15'
+author: 'Luis Ivan Carranza Saldaña'
+tags: ['engineering', 'craft', 'principles']
+---
+
+Most code in the world is written, not engineered.
+
+There is a difference. **Writing code** is what you do when a feature is overdue and the goal is to make the test pass. **Engineering software** is what you do when the test passing is the floor, not the ceiling — when you ask not whether the code runs, but whether it should exist, what it will cost to operate, and who will read it three years from now.
+
+The distinction is not snobbery. It is operational. Code that was written runs until it breaks. Code that was engineered keeps running, quietly, while the team that wrote it has moved on to other problems.
+
+## The cost of code is not in writing it
+
+A line of code is read far more often than it is written. It is read by the next developer who joins. It is read by the on-call engineer at 3am. It is read by the auditor before a compliance review. It is read by the AI assistant suggesting the next change.
+
+The first reading is the one we pay attention to. The hundredth reading is where the real cost lives.
+
+So when we engineer a system, we optimize for the hundredth reading. That means: smaller surface area, fewer abstractions, clearer naming, intentional structure. None of these slow down the first write. All of them compound across the system's lifetime.
+
+## What engineering looks like in practice
+
+It looks like:
+
+- A function that handles one case well, named for what it does, not for where it lives.
+- A schema that anticipates the next three product decisions, not the next thirty.
+- A test that fails for one reason, written so the failure tells you what to fix.
+- A deployment that rolls back faster than the bug it introduced.
+
+It does not look like:
+
+- A clever solution. Clever is the enemy of the on-call engineer.
+- A flexible system "for the future". Flexibility added before it is needed is technical debt with a marketing budget.
+- A framework. Frameworks solve our problems by inviting us into theirs.
+
+## How we work with this in mind
+
+Every project we take on starts with a conversation about what the system needs to do, and ends with documentation about what it actually does. Between those two conversations is the engineering.
+
+This is not faster than writing code. It is sometimes slower, in the first week. By the third month, it is much faster, because nothing is unraveling under us.
+
+We chose to call the company **Luis Carranza, LLC** instead of something with "labs" or "studio" in the name because those words suggest exploration. We are not here to explore. We are here to engineer software that runs.

@@ -1,0 +1,17 @@
+services:
+  web:
+    container_name: luiscarranza-landing
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3005:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+    restart: unless-stopped

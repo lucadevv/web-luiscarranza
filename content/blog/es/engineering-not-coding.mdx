@@ -1,0 +1,44 @@
+---
+title: 'Ingeniería, no código.'
+description: 'Por qué trazamos una línea entre escribir código y diseñar software, y qué significa esa distinción para los sistemas que entregás.'
+date: '2026-05-15'
+author: 'Luis Ivan Carranza Saldaña'
+tags: ['ingeniería', 'oficio', 'principios']
+---
+
+La mayor parte del código del mundo se escribe, no se diseña.
+
+Hay una diferencia. **Escribir código** es lo que hacés cuando un feature está atrasado y el objetivo es que pase el test. **Diseñar software con ingeniería** es lo que hacés cuando pasar el test es el piso, no el techo — cuando preguntás no si el código corre, sino si debería existir, cuánto va a costar operarlo, y quién lo va a leer dentro de tres años.
+
+La distinción no es esnobismo. Es operativa. El código que se escribió corre hasta que se rompe. El código diseñado con ingeniería sigue corriendo, calladamente, mientras el equipo que lo escribió ya se movió a otros problemas.
+
+## El costo del código no está en escribirlo
+
+Una línea de código se lee mucho más veces que las que se escribe. La lee el siguiente desarrollador que se suma. La lee el ingeniero on-call a las 3 de la mañana. La lee el auditor antes de un review de compliance. La lee el asistente de IA sugiriendo el siguiente cambio.
+
+La primera lectura es a la que prestamos atención. La centésima lectura es donde vive el costo real.
+
+Así que cuando diseñamos un sistema, optimizamos para la lectura número cien. Eso significa: menos superficie, menos abstracciones, naming más claro, estructura intencional. Nada de eso ralentiza la primera escritura. Todo compone a lo largo de la vida del sistema.
+
+## Cómo se ve la ingeniería en la práctica
+
+Se ve como:
+
+- Una función que maneja un caso bien, nombrada por lo que hace, no por dónde vive.
+- Un esquema que anticipa las próximas tres decisiones de producto, no las próximas treinta.
+- Un test que falla por una razón, escrito de manera que el fallo te dice qué arreglar.
+- Un deployment que hace rollback más rápido que el bug que introdujo.
+
+No se ve como:
+
+- Una solución ingeniosa. Lo ingenioso es el enemigo del ingeniero on-call.
+- Un sistema flexible "para el futuro". Flexibilidad agregada antes de ser necesaria es deuda técnica con presupuesto de marketing.
+- Un framework. Los frameworks resuelven nuestros problemas invitándonos a los suyos.
+
+## Cómo trabajamos con esto en mente
+
+Cada proyecto que tomamos empieza con una conversación sobre lo que el sistema necesita hacer, y termina con documentación sobre lo que efectivamente hace. Entre esas dos conversaciones está la ingeniería.
+
+Esto no es más rápido que escribir código. A veces es más lento, en la primera semana. Para el tercer mes, es mucho más rápido, porque nada se desarma debajo nuestro.
+
+Elegimos llamar la empresa **Luis Carranza, LLC** en vez de algo con "labs" o "studio" en el nombre porque esas palabras sugieren exploración. No estamos acá para explorar. Estamos acá para diseñar software que corra.

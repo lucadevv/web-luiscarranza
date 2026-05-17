@@ -1,0 +1,39 @@
+---
+title: 'El usuario es la especificación.'
+description: 'Los documentos describen lo que el software debería hacer. Las personas revelan lo que realmente necesita hacer. La brecha entre los dos es donde mueren la mayoría de los productos.'
+date: '2026-05-08'
+author: 'Luis Ivan Carranza Saldaña'
+tags: ['producto', 'investigación', 'principios']
+---
+
+Todo proyecto empieza con un documento. Un brief, un PRD, una página de Notion, un archivo de Figma. El documento es un artefacto útil. También es, casi siempre, incorrecto.
+
+No incorrecto en el sentido de deshonesto. Incorrecto en el sentido de incompleto. Los documentos describen lo que el software se supone que tiene que hacer. No pueden describir lo que realmente necesita hacer, porque esa información vive en las personas que lo van a usar, y esas personas no lo han usado todavía.
+
+Así que el documento es una hipótesis. Es la mejor adivinanza del equipo sobre lo que va a funcionar. El trabajo de la ingeniería, entonces, no es implementar fielmente la hipótesis. El trabajo es probar la hipótesis contra la realidad lo más rápido posible, y seguir probando a medida que el sistema crece.
+
+## Los documentos mienten por omisión
+
+Un documento dice: "los usuarios pueden filtrar el dashboard por región".
+
+Un usuario dice: "filtro por región cada lunes, después exporto a CSV, después le mando el CSV por email a mi jefa porque ella no tiene acceso al dashboard".
+
+El documento no estaba mintiendo. Estaba incompleto. Lo que el usuario realmente necesita no es un filtro por región. Necesita un reporte semanal enviado a su jefa. El filtro por región es un workaround por la ausencia de ese reporte.
+
+Este tipo de omisión compone. Cada feature entregada contra un documento incompleto es una feature que no encaja del todo. Después de doce features, el producto se siente confuso. Después de cincuenta, el producto se siente roto, aunque cada feature haya sido construida exactamente como se especificó.
+
+## Lo que hacemos en cambio
+
+Tratamos los documentos como puntos de partida y a las personas como la verdad. Antes de entregar cualquier feature mayor, la ponemos frente a tres a cinco usuarios que coinciden con el perfil objetivo. Les pedimos que la usen. No les preguntamos qué piensan. Los observamos.
+
+Cuando se traban, no ayudamos. Anotamos dónde se trabaron. Cuando preguntan "¿esto se supone que hace esto?", lo anotamos. Cuando terminan y dicen "esto está buenísimo", les preguntamos qué harían mañana, pasado y el mes que viene con esto.
+
+La conversación que sigue es donde emerge la especificación real. No en un documento. En lo que el usuario no pudo descifrar, lo que quería pero no obtuvo, y lo que hizo con la cosa una vez que fue suya.
+
+## Por qué esto importa más de lo que suena
+
+El costo de construir la cosa equivocada no es el tiempo para construirla. Es el tiempo para descubrir que estaba mal, más el tiempo para construir la cosa correcta, más el costo político de admitir que la primera no funcionó, más el costo operacional de soportar ambas versiones durante la transición.
+
+Construir la cosa correcta la primera vez es más barato por un orden de magnitud. La única forma de construir la cosa correcta la primera vez es descubrir cuál es la cosa correcta antes de construirla.
+
+Eso lo descubrís de las personas. No de los documentos.

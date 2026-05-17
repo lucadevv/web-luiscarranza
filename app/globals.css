@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+@theme {
+  /* === Apple-corporate palette in OKLCH ===
+     Tinted neutrals — never pure #000 or #fff.
+     Hue 240 = subtle blue cast, like Apple's #fbfbfd / #1d1d1f. */
+  --color-bg: oklch(0.985 0.003 240);
+  --color-bg-alt: oklch(0.97 0.004 240);
+  --color-bg-dark: oklch(0.18 0.008 240);
+
+  --color-fg: oklch(0.20 0.008 240);
+  --color-fg-2: oklch(0.45 0.006 240);
+  --color-fg-3: oklch(0.62 0.005 240);
+  --color-fg-on-dark: oklch(0.97 0.003 240);
+  --color-fg-2-on-dark: oklch(0.72 0.005 240);
+
+  --color-accent: oklch(0.55 0.18 245);
+  --color-accent-hover: oklch(0.48 0.20 245);
+
+  --color-border: oklch(0.92 0.003 240);
+  --color-border-strong: oklch(0.86 0.004 240);
+  --color-border-on-dark: oklch(0.30 0.006 240);
+
+  /* === Typography — Geist sans only, no display/body split ===
+     Apple commits to one family; weight contrast does the hierarchy. */
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* === Motion — restraint, Apple-style ===
+     Single ease-out curve. No bounce, no elastic. */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* === Fluid spacing scale ===
+     Use these for layout-level gaps that should scale with viewport.
+     Small UI spacing (button padding, fine margins) stays in px for consistency. */
+  --space-fluid-sm: clamp(0.75rem, 1.2vw, 1rem);          /* 12-16px */
+  --space-fluid-md: clamp(1rem, 1.8vw, 1.5rem);            /* 16-24px */
+  --space-fluid-lg: clamp(1.5rem, 2.6vw, 2.25rem);         /* 24-36px */
+  --space-fluid-xl: clamp(2rem, 4vw, 3rem);                /* 32-48px */
+  --space-fluid-2xl: clamp(3rem, 6vw, 5rem);               /* 48-80px */
+  --space-fluid-3xl: clamp(4rem, 8vw, 7rem);               /* 64-112px */
+
+}
+
+/* === Motion keyframes (Apple-corporate, restrained) ===
+   Defined at root level (not inside @theme) so Tailwind v4 emits them
+   as standard global @keyframes rules, usable from inline `animation` properties. */
+@keyframes lc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lc-drift {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(6px);
+  }
+}
+
+/* FAQ — hide native details marker, rotate chevron when open */
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-summary::marker {
+  display: none;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--color-fg);
+}
+
+.faq-summary:hover .faq-chevron {
+  color: var(--color-fg);
+}
+
+/* === Post prose — Apple-corporate editorial typography === */
+.post-prose {
+  font-family: var(--font-sans);
+  color: var(--color-fg-2);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+}
+
+.post-prose > * + * {
+  margin-top: 1.25em;
+}
+
+.post-prose h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--color-fg);
+  margin-top: 2.25em;
+  margin-bottom: 0.6em;
+  text-wrap: balance;
+}
+
+.post-prose h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.post-prose p {
+  text-wrap: pretty;
+}
+
+.post-prose strong {
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.post-prose em {
+  font-style: italic;
+}
+
+.post-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity 150ms var(--ease-out-strong);
+}
+
+.post-prose a:hover {
+  opacity: 0.72;
+}
+
+.post-prose ul,
+.post-prose ol {
+  padding-left: 1.5em;
+}
+
+.post-prose ul {
+  list-style-type: disc;
+}
+
+.post-prose ol {
+  list-style-type: decimal;
+}
+
+.post-prose li {
+  margin: 0.4em 0;
+}
+
+.post-prose li::marker {
+  color: var(--color-fg-3);
+}
+
+.post-prose blockquote {
+  border-left: 3px solid var(--color-border-strong);
+  padding-left: 1.25em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: var(--color-fg-2);
+}
+
+.post-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  padding: 0.15em 0.45em;
+  border-radius: 5px;
+}
+
+.post-prose pre {
+  background: var(--color-bg-dark);
+  color: var(--color-fg-on-dark);
+  padding: 1.25em 1.4em;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  line-height: 1.55;
+}
+
+.post-prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.post-prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5em 0;
+}
+
+.post-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5em 0;
+}
+
+.post-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94em;
+}
+
+.post-prose th,
+.post-prose td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.6em 1em;
+  text-align: left;
+}
+
+.post-prose th {
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+/* Minimal resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.47;
+  letter-spacing: -0.011em;
+  overflow-x: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Headlines: prevent orphan words, balance line breaks */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-fg-on-dark);
+}
+
+/* Focus rings — accessibility, visible for keyboard users only */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link — visible only when focused via keyboard */
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transform: translateY(-200%);
+  transition: transform 200ms var(--ease-out-strong);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Subtle grain overlay — adds texture, breaks digital flatness.
+   Position fixed so it stays put while scrolling.
+   Pointer-events:none so it doesn't interfere with interaction. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 280px 280px;
+}
+
+/* Accessibility — respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,39 @@
+---
+title: 'The user is the spec.'
+description: 'Documents describe what software should do. People reveal what it actually needs to do. The gap between the two is where most products quietly die.'
+date: '2026-05-08'
+author: 'Luis Ivan Carranza Saldaña'
+tags: ['product', 'research', 'principles']
+---
+
+Every project starts with a document. A brief, a PRD, a Notion page, a Figma file. The document is a useful artifact. It is also, almost always, wrong.
+
+Not wrong in the sense of dishonest. Wrong in the sense of incomplete. Documents describe what the software is supposed to do. They cannot describe what it actually needs to do, because that information lives in the people who will use it, and those people have not used it yet.
+
+So the document is a hypothesis. It is the team's best guess about what will work. The job of engineering, then, is not to faithfully implement the hypothesis. The job is to test the hypothesis against reality as quickly as possible, and to keep testing as the system grows.
+
+## Documents lie by omission
+
+A document says: "users can filter the dashboard by region."
+
+A user says: "I filter by region every Monday, then I export to CSV, then I email the CSV to my boss because she doesn't have access to our dashboard."
+
+The document was not lying. It was incomplete. What the user actually needs is not a region filter. They need a weekly report sent to their boss. The region filter is a workaround for the absence of that report.
+
+This kind of omission compounds. Every feature shipped against an incomplete document is a feature that does not quite fit. After twelve features, the product feels confused. After fifty, the product feels broken, even though every single feature was built exactly as specified.
+
+## What we do instead
+
+We treat documents as starting points and people as the truth. Before we ship any major feature, we put it in front of three to five users who match the target profile. We ask them to use it. We do not ask them what they think. We watch them.
+
+When they get stuck, we do not help. We write down where they got stuck. When they ask "is it supposed to do this?", we write that down. When they finish and say "this is great", we ask what they would do tomorrow, the day after, and next month with this thing.
+
+The conversation that follows is where the real specification emerges. Not in a document. In what the user could not figure out, what they wanted but did not get, and what they did with the thing once it was theirs.
+
+## Why this matters more than it sounds
+
+The cost of building the wrong thing is not the time to build it. It is the time to discover it was wrong, plus the time to build the right thing, plus the political cost of admitting the first thing did not work, plus the operational cost of supporting both versions during the transition.
+
+Building the right thing the first time is cheaper by an order of magnitude. The only way to build the right thing the first time is to find out what the right thing is before you build it.
+
+You find that out from people. Not from documents.
