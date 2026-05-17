@@ -26,8 +26,8 @@ services:
     image: web-luiscarranza:latest
     restart: unless-stopped
     ports:
-      # Bind to localhost only — a reverse proxy (nginx/Caddy/Traefik) on the VPS
-      # should listen on 80/443 and proxy_pass to 127.0.0.1:3000.
+      # Bind to localhost only — optional direct host access for debugging.
+      # Nginx Proxy Manager reaches this container via proxy-network (alias: luis-carranza).
       - "127.0.0.1:3000:3000"
     env_file:
       - .env.local
@@ -39,14 +39,23 @@ services:
         max-size: "10m"
         max-file: "3"
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000"]
       interval: 30s
       timeout: 10s
       start_period: 30s
       retries: 3
+    networks:
+      default:
+      proxy-network:
+        aliases:
+          - luis-carranza
     deploy:
       resources:
         limits:
           memory: 512M
         reservations:
           memory: 128M
+
+networks:
+  proxy-network:
+    external: true

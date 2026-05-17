@@ -24,6 +24,7 @@ Apple-corporate aesthetic: Geist typography, OKLCH palette, restrained motion, f
 - 📬 **Newsletter signup** wired to Resend Audiences
 - 📝 **Blog** (`/blog`) with MDX, RSS feed, BlogPosting JSON-LD, reading time
 - 📖 **About page** (`/about`) — extended manifesto, founder bio, timeline, values
+- 📇 **Contact page** (`/contact`) — legal entity info, response times, dedicated form
 - ⚖️ **Privacy + Terms** (`/privacy`, `/terms`) — bilingual
 - 🔍 **SEO** — Organization + Person + WebSite + FAQPage schemas, hreflang, sitemap, manifest
 - 🖼️ **Dynamic OG image** via `next/og` (Edge runtime)
@@ -75,8 +76,17 @@ Final image is ~50 MB (vs ~1 GB with full `node_modules`).
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-The container binds to `127.0.0.1:3000` only — put nginx, Caddy, or Traefik
-in front of it to terminate TLS and proxy requests from 80/443 → 3000.
+The container binds to `127.0.0.1:3000` for optional host debugging and joins
+the external Docker network `proxy-network` (alias `luis-carranza`) so
+[Nginx Proxy Manager](https://nginxproxymanager.com/) can reach it by container name.
+
+Create the network once on the VPS if it does not exist:
+
+```bash
+docker network create proxy-network
+```
+
+In NPM, set the proxy host **Forward Hostname** to `luis-carranza` and **Port** to `3000`.
 
 ### Production env vars
 
@@ -100,8 +110,10 @@ docker inspect luiscarranza-prod | grep -i health
 
 ```bash
 # On the VPS:
-cd /opt/web-luiscarranza
+cd /opt/lucadev/web-luiscarranza
 git pull origin main
+# Load secrets so NEXT_PUBLIC_* build args are not empty:
+set -a && source .env.local && set +a
 docker compose -f docker-compose.prod.yml up -d --build
 docker compose -f docker-compose.prod.yml logs -f web    # verify boot
 ```
@@ -128,6 +140,7 @@ app/                        Routes, layouts, OG image, robots, sitemap, manifest
 │   ├── contact/route.ts    Contact form endpoint (Resend)
 │   └── subscribe/route.ts  Newsletter endpoint (Resend Audiences)
 ├── about/                  /about extended page
+├── contact/                /contact dedicated page
 ├── blog/                   /blog index + [slug] post pages
 ├── privacy/                /privacy
 ├── terms/                  /terms
