@@ -132,6 +132,10 @@ export type Translations = {
         title: string;
         body: string;
       };
+      phone: {
+        title: string;
+        body: string;
+      };
       legal: {
         title: string;
         rows: Array<{ label: string; value: string }>;
@@ -437,6 +441,11 @@ const enContent: Translations = {
         body:
           'contact@luiscarranza.com — for general inquiries, partnerships, and new projects.',
       },
+      phone: {
+        title: 'Phone',
+        body:
+          '+1 (814) 831-6901 — US line for project calls and time-sensitive matters.',
+      },
       legal: {
         title: 'Legal entity',
         rows: [
@@ -444,6 +453,7 @@ const enContent: Translations = {
           { label: 'Type', value: 'Delaware Limited Liability Company' },
           { label: 'EIN', value: '32-0855037' },
           { label: 'Delaware File', value: '10608059' },
+          { label: 'Phone', value: '+1 (814) 831-6901' },
           { label: 'Registered Agent', value: 'Legalinc Corporate Services Inc.' },
           {
             label: 'Address',
@@ -494,6 +504,11 @@ const enContent: Translations = {
         label: 'Registered Agent',
         value: 'Legalinc Corporate Services Inc.',
         sub: '131 Continental Dr, Suite 305, Newark, DE 19713',
+      },
+      {
+        label: 'Phone',
+        value: '+1 (814) 831-6901',
+        sub: 'US line · M-F',
       },
       {
         label: 'Founder',
@@ -783,6 +798,11 @@ const esContent: Translations = {
         body:
           'contact@luiscarranza.com — para consultas generales, partnerships y proyectos nuevos.',
       },
+      phone: {
+        title: 'Teléfono',
+        body:
+          '+1 (814) 831-6901 — línea US para llamadas de proyecto y temas urgentes.',
+      },
       legal: {
         title: 'Entidad legal',
         rows: [
@@ -790,6 +810,7 @@ const esContent: Translations = {
           { label: 'Tipo', value: 'Compañía de Responsabilidad Limitada de Delaware' },
           { label: 'EIN', value: '32-0855037' },
           { label: 'Archivo de Delaware', value: '10608059' },
+          { label: 'Teléfono', value: '+1 (814) 831-6901' },
           { label: 'Agente registrado', value: 'Legalinc Corporate Services Inc.' },
           {
             label: 'Dirección',
@@ -840,6 +861,11 @@ const esContent: Translations = {
         label: 'Agente registrado',
         value: 'Legalinc Corporate Services Inc.',
         sub: '131 Continental Dr, Suite 305, Newark, DE 19713',
+      },
+      {
+        label: 'Teléfono',
+        value: '+1 (814) 831-6901',
+        sub: 'Línea US · Lun-Vie',
       },
       {
         label: 'Fundador',

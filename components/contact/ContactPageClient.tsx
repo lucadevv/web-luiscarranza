@@ -149,6 +149,32 @@ export default function ContactPageClient() {
               </p>
             </article>
 
+            {/* Phone */}
+            <article>
+              <h2 style={blockHeadingStyle}>{page.sections.phone.title}</h2>
+              <p style={blockBodyStyle}>
+                <a
+                  href={`tel:${SITE.phoneE164}`}
+                  onClick={() =>
+                    trackEvent('cta_click', {
+                      location: 'contact_page',
+                      label: 'phone_call',
+                    })
+                  }
+                  className="hover:underline underline-offset-[3px]"
+                  style={{
+                    color: 'var(--color-accent)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {SITE.phone}
+                </a>
+                <span style={{ display: 'block', marginTop: '6px' }}>
+                  {page.sections.phone.body.replace(SITE.phone, '').replace(/^[^a-zA-ZáéíóúÁÉÍÓÚñÑ]+/, '')}
+                </span>
+              </p>
+            </article>
+
             {/* Response times */}
             <article>
               <h2 style={blockHeadingStyle}>{page.sections.response.title}</h2>

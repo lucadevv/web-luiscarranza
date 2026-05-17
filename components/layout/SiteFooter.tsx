@@ -105,6 +105,27 @@ export default function SiteFooter() {
             >
               {SITE.email}
             </a>
+            <a
+              href={`tel:${SITE.phoneE164}`}
+              onClick={() =>
+                trackEvent('cta_click', { location: 'footer', label: 'phone_call' })
+              }
+              className="block hover:underline underline-offset-[3px]"
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '13px',
+                fontWeight: 400,
+                letterSpacing: '-0.005em',
+                color: 'var(--color-fg-2)',
+                textDecoration: 'none',
+                paddingBlock: '4px',
+                paddingInline: '2px',
+                marginLeft: '-2px',
+                marginTop: '2px',
+              }}
+            >
+              {SITE.phone}
+            </a>
 
             <div
               className="flex items-center gap-4 mt-5"
