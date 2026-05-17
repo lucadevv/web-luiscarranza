@@ -121,6 +121,33 @@ export type Translations = {
       alternative: string;
     };
   };
+  contactPage: {
+    metaTitle: string;
+    metaDescription: string;
+    eyebrow: string;
+    headline: string;
+    lead: string;
+    sections: {
+      direct: {
+        title: string;
+        body: string;
+      };
+      legal: {
+        title: string;
+        rows: Array<{ label: string; value: string }>;
+      };
+      social: {
+        title: string;
+        body: string;
+      };
+      response: {
+        title: string;
+        body: string;
+      };
+    };
+    formHeading: string;
+    back: string;
+  };
   footer: {
     tagline: string;
     navTitle: string;
@@ -395,6 +422,48 @@ const enContent: Translations = {
         'Something went wrong. Please try again or email us at contact@luiscarranza.com.',
       alternative: 'Or email directly at contact@luiscarranza.com',
     },
+  },
+  contactPage: {
+    metaTitle: 'Contact',
+    metaDescription:
+      'Contact Luis Carranza, LLC — a Delaware-registered software company. Email, legal address, and direct project inquiry form.',
+    eyebrow: 'Contact',
+    headline: 'Get in touch.',
+    lead:
+      'We respond to every legitimate inquiry within 24 hours. For project work, the form below routes directly to the team. For legal or media matters, email us instead.',
+    sections: {
+      direct: {
+        title: 'Direct email',
+        body:
+          'contact@luiscarranza.com — for general inquiries, partnerships, and new projects.',
+      },
+      legal: {
+        title: 'Legal entity',
+        rows: [
+          { label: 'Name', value: 'Luis Carranza, LLC' },
+          { label: 'Type', value: 'Delaware Limited Liability Company' },
+          { label: 'EIN', value: '32-0855037' },
+          { label: 'Delaware File', value: '10608059' },
+          { label: 'Registered Agent', value: 'Legalinc Corporate Services Inc.' },
+          {
+            label: 'Address',
+            value: '131 Continental Dr, Suite 305, Newark, DE 19713, USA',
+          },
+        ],
+      },
+      social: {
+        title: 'Social',
+        body:
+          'LinkedIn and GitHub links are in the footer. We answer direct messages there as well.',
+      },
+      response: {
+        title: 'Response times',
+        body:
+          'Inquiries Monday–Friday receive a response within 24 hours. Weekend inquiries are answered Monday morning.',
+      },
+    },
+    formHeading: 'Send us a message',
+    back: 'Back to home',
   },
   footer: {
     tagline: 'Software for enterprises, startups, and governments.',
@@ -699,6 +768,48 @@ const esContent: Translations = {
         'Algo salió mal. Intentá de nuevo o escribinos a contact@luiscarranza.com.',
       alternative: 'O escribinos directamente a contact@luiscarranza.com',
     },
+  },
+  contactPage: {
+    metaTitle: 'Contacto',
+    metaDescription:
+      'Contactá a Luis Carranza, LLC — empresa de software registrada en Delaware. Email, dirección legal y formulario directo para consultas de proyectos.',
+    eyebrow: 'Contacto',
+    headline: 'Hablemos.',
+    lead:
+      'Respondemos cada consulta legítima en menos de 24 horas. Para proyectos, el formulario abajo va directo al equipo. Para temas legales o de prensa, escribinos por email.',
+    sections: {
+      direct: {
+        title: 'Email directo',
+        body:
+          'contact@luiscarranza.com — para consultas generales, partnerships y proyectos nuevos.',
+      },
+      legal: {
+        title: 'Entidad legal',
+        rows: [
+          { label: 'Nombre', value: 'Luis Carranza, LLC' },
+          { label: 'Tipo', value: 'Compañía de Responsabilidad Limitada de Delaware' },
+          { label: 'EIN', value: '32-0855037' },
+          { label: 'Archivo de Delaware', value: '10608059' },
+          { label: 'Agente registrado', value: 'Legalinc Corporate Services Inc.' },
+          {
+            label: 'Dirección',
+            value: '131 Continental Dr, Suite 305, Newark, DE 19713, USA',
+          },
+        ],
+      },
+      social: {
+        title: 'Redes sociales',
+        body:
+          'Los enlaces a LinkedIn y GitHub están en el footer. También respondemos mensajes directos en esas plataformas.',
+      },
+      response: {
+        title: 'Tiempos de respuesta',
+        body:
+          'Consultas de lunes a viernes reciben respuesta en menos de 24 horas. Consultas del fin de semana se responden el lunes a la mañana.',
+      },
+    },
+    formHeading: 'Enviános un mensaje',
+    back: 'Volver al inicio',
   },
   footer: {
     tagline: 'Software para empresas, startups y gobiernos.',
