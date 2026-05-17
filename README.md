@@ -31,15 +31,15 @@ Apple-corporate aesthetic: Geist typography, OKLCH palette, restrained motion, f
 - 🔒 **Security** — CSP, HSTS, X-Frame-Options, rate-limit on API routes, origin check
 - 📱 **Mobile-first** with full-screen slide-down menu
 
-## Run locally (Docker)
+## Development (Docker)
 
 ```bash
 docker compose up -d --build
 ```
 
-Visit **http://localhost:3005** (host) — the container exposes Next.js on port 3000 internally.
+Visit **http://localhost:3005** (host) — the container exposes Next.js on port 3000 internally with hot reload.
 
-### Useful commands
+### Useful dev commands
 
 ```bash
 # tail logs
@@ -55,7 +55,7 @@ docker compose down -v && docker compose up -d --build
 docker compose down
 ```
 
-## Run locally (without Docker)
+## Development (without Docker)
 
 ```bash
 npm install
@@ -64,6 +64,47 @@ npm run dev
 ```
 
 Then visit http://localhost:3000.
+
+## Production (Docker)
+
+Production uses a multi-stage build with Next.js `output: 'standalone'` mode.
+Final image is ~50 MB (vs ~1 GB with full `node_modules`).
+
+```bash
+# On your VPS, in the project directory:
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+The container binds to `127.0.0.1:3000` only — put nginx, Caddy, or Traefik
+in front of it to terminate TLS and proxy requests from 80/443 → 3000.
+
+### Production env vars
+
+`docker-compose.prod.yml` reads from `.env.local` AND injects public Firebase
+vars as build args (they need to be baked into the client bundle at build time).
+
+Make sure `.env.local` exists on the VPS with all values filled in
+(see `.env.example` for the full list).
+
+### Production health check
+
+The container has a built-in healthcheck that hits `http://localhost:3000`
+every 30 seconds. Check status with:
+
+```bash
+docker ps                                    # STATUS column shows (healthy)
+docker inspect luiscarranza-prod | grep -i health
+```
+
+### Production deploy workflow
+
+```bash
+# On the VPS:
+cd /opt/web-luiscarranza
+git pull origin main
+docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml logs -f web    # verify boot
+```
 
 ## Environment variables
 
