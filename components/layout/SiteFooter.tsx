@@ -105,27 +105,40 @@ export default function SiteFooter() {
             >
               {SITE.email}
             </a>
-            <a
-              href={`tel:${SITE.phoneE164}`}
-              onClick={() =>
-                trackEvent('cta_click', { location: 'footer', label: 'phone_call' })
-              }
-              className="block hover:underline underline-offset-[3px]"
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '13px',
-                fontWeight: 400,
-                letterSpacing: '-0.005em',
-                color: 'var(--color-fg-2)',
-                textDecoration: 'none',
-                paddingBlock: '4px',
-                paddingInline: '2px',
-                marginLeft: '-2px',
-                marginTop: '2px',
-              }}
-            >
-              {SITE.phone}
-            </a>
+            {/*
+              suppressHydrationWarning on the wrapper:
+              privacy/anti-tracking browser extensions (uBlock Origin,
+              Privacy Badger, DuckDuckGo) often strip <a href="tel:..."> links
+              from the DOM before React hydrates. Wrapping with suppressHydration
+              keeps SSR output for SEO + crawlers + mobile click-to-call while
+              tolerating extension-stripped clients without a console error.
+            */}
+            <div suppressHydrationWarning>
+              <a
+                href={`tel:${SITE.phoneE164}`}
+                onClick={() =>
+                  trackEvent('cta_click', {
+                    location: 'footer',
+                    label: 'phone_call',
+                  })
+                }
+                className="block hover:underline underline-offset-[3px]"
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '13px',
+                  fontWeight: 400,
+                  letterSpacing: '-0.005em',
+                  color: 'var(--color-fg-2)',
+                  textDecoration: 'none',
+                  paddingBlock: '4px',
+                  paddingInline: '2px',
+                  marginLeft: '-2px',
+                  marginTop: '2px',
+                }}
+              >
+                {SITE.phone}
+              </a>
+            </div>
 
             <div
               className="flex items-center gap-4 mt-5"

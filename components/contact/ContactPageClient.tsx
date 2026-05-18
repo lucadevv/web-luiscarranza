@@ -152,7 +152,7 @@ export default function ContactPageClient() {
             {/* Phone */}
             <article>
               <h2 style={blockHeadingStyle}>{page.sections.phone.title}</h2>
-              <p style={blockBodyStyle}>
+              <p style={blockBodyStyle} suppressHydrationWarning>
                 <a
                   href={`tel:${SITE.phoneE164}`}
                   onClick={() =>
