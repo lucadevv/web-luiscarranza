@@ -9,6 +9,8 @@ export const SITE = {
   description:
     'Delaware-registered software company building digital solutions for enterprises, startups, and governments worldwide.',
   email: 'contact@luiscarranza.com',
+  phone: '+1 (814) 831-6901',
+  phoneE164: '+18148316901',
   founder: {
     name: 'Luis Ivan Carranza Saldaña',
     jobTitle: 'Founder & Authorized Representative',
@@ -57,12 +59,15 @@ export function organizationSchema() {
     },
     areaServed: 'Worldwide',
     email: SITE.email,
+    telephone: SITE.phoneE164,
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'customer support',
         email: SITE.email,
+        telephone: SITE.phoneE164,
         availableLanguage: ['en', 'es'],
+        areaServed: 'Worldwide',
       },
     ],
     sameAs: [SITE.social.linkedin, SITE.social.github],

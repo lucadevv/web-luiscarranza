@@ -86,8 +86,9 @@ export const privacy: Record<Language, LegalDocument> = {
       lines: [
         'Luis Carranza, LLC',
         '131 Continental Dr, Suite 305',
-        'Newark, DE 19713',
+        'Newark, DE 19713, USA',
         'contact@luiscarranza.com',
+        '+1 (814) 831-6901',
       ],
     },
   },
@@ -160,8 +161,9 @@ export const privacy: Record<Language, LegalDocument> = {
       lines: [
         'Luis Carranza, LLC',
         '131 Continental Dr, Suite 305',
-        'Newark, DE 19713',
+        'Newark, DE 19713, USA',
         'contact@luiscarranza.com',
+        '+1 (814) 831-6901',
       ],
     },
   },
@@ -240,8 +242,9 @@ export const terms: Record<Language, LegalDocument> = {
       lines: [
         'Luis Carranza, LLC',
         '131 Continental Dr, Suite 305',
-        'Newark, DE 19713',
+        'Newark, DE 19713, USA',
         'contact@luiscarranza.com',
+        '+1 (814) 831-6901',
       ],
     },
   },
@@ -317,8 +320,9 @@ export const terms: Record<Language, LegalDocument> = {
       lines: [
         'Luis Carranza, LLC',
         '131 Continental Dr, Suite 305',
-        'Newark, DE 19713',
+        'Newark, DE 19713, USA',
         'contact@luiscarranza.com',
+        '+1 (814) 831-6901',
       ],
     },
   },
